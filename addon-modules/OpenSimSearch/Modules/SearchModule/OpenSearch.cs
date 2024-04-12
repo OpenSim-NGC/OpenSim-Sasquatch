@@ -1,68 +1,61 @@
-using log4net;
-using Mono.Addins;
-using Nini.Config;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+
 using Nwc.XmlRpc;
 using OpenMetaverse;
 using OpenSim.Framework;
 using OpenSim.Region.Framework.Interfaces;
 using OpenSim.Region.Framework.Scenes;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Xml;
+
 using DirFindFlags = OpenMetaverse.DirectoryManager.DirFindFlags;
-
-[assembly: Addin("OpenSimSearch", OpenSim.VersionInfo.AssemblyVersionNumber)]
-[assembly: AddinDependency("OpenSim.Region.Framework", OpenSim.VersionInfo.AssemblyVersionNumber)]
-[assembly: AddinDescription("OpenSimSearch module.")]
-[assembly: AddinAuthor("Unknown")]
-
 
 namespace OpenSimSearch.Modules.OpenSearch
 {
-    [Extension(Path = "/OpenSim/RegionModules", NodeName = "RegionModule", Id = "OpenSimSearch")]
     public class OpenSearchModule : ISearchModule, ISharedRegionModule
     {
-        //
-        // Log module
-        //
-        private static readonly ILog m_log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
-        //
-        // Module vars
-        //
         private List<Scene> m_Scenes = new List<Scene>();
         private string m_SearchServer = "";
         private bool m_Enabled = true;
 
-        #region IRegionModuleBase implementation
-        public void Initialise(IConfigSource config)
+        private readonly IConfiguration m_Config;
+        private readonly ILogger<OpenSimSearchModule> m_Logger;
+
+        public OpenSearchModule(IConfiguration configuration, ILogger<OpenSimSearchModule> logger)
         {
-            IConfig searchConfig = config.Configs["Search"];
+            m_Config = configuration;
+            m_Logger = logger;
+        }
 
-            if (searchConfig == null)
+        #region IRegionModuleBase implementation
+        public void Initialise()
+        {
+            var searchConfig = m_Config.GetSection("Search");
+            if (searchConfig.Exists() is false)
             {
                 m_Enabled = false;
                 return;
             }
-            if (searchConfig.GetString("Module", "OpenSimSearch") != "OpenSimSearch")
+
+            if (searchConfig.GetValue("Module", "OpenSimSearch") != "OpenSimSearch")
             {
                 m_Enabled = false;
                 return;
             }
 
-            m_SearchServer = searchConfig.GetString("SearchURL", "");
+            m_SearchServer = searchConfig.GetValue("SearchURL", "");
             if (m_SearchServer == "")
             {
-                m_log.Error("[SEARCH] No search server, disabling search");
+                m_Logger.LogError("[SEARCH] No search server, disabling search");
                 m_Enabled = false;
                 return;
             }
 
-            m_log.Info("[SEARCH] OpenSimSearch module is active");
+            m_Logger.LogInformation("[SEARCH] OpenSimSearch module is active");
             m_Enabled = true;
         }
 
@@ -130,6 +123,7 @@ namespace OpenSimSearch.Modules.OpenSearch
             client.OnDirPopularQuery += DirPopularQuery;
             client.OnDirLandQuery += DirLandQuery;
             client.OnDirClassifiedQuery += DirClassifiedQuery;
+
             // Response after Directory Queries
             client.OnEventInfoRequest += EventInfoRequest;
             client.OnClassifiedInfoRequest += ClassifiedInfoRequest;
@@ -153,8 +147,7 @@ namespace OpenSimSearch.Modules.OpenSearch
             }
             catch (WebException ex)
             {
-                m_log.ErrorFormat("[SEARCH]: Unable to connect to Search " +
-                        "Server {0}.  Exception {1}", m_SearchServer, ex);
+                m_Logger.LogError(ex, $"Unable to connect to Search Server {m_SearchServer}");
 
                 Hashtable ErrorHash = new Hashtable();
                 ErrorHash["success"] = false;
@@ -165,9 +158,7 @@ namespace OpenSimSearch.Modules.OpenSearch
             }
             catch (SocketException ex)
             {
-                m_log.ErrorFormat(
-                        "[SEARCH]: Unable to connect to Search Server {0}. " +
-                        "Exception {1}", m_SearchServer, ex);
+                m_Logger.LogError(ex, $"Unable to connect to Search Server {m_SearchServer}.");
 
                 Hashtable ErrorHash = new Hashtable();
                 ErrorHash["success"] = false;
@@ -178,9 +169,7 @@ namespace OpenSimSearch.Modules.OpenSearch
             }
             catch (XmlException ex)
             {
-                m_log.ErrorFormat(
-                        "[SEARCH]: Unable to connect to Search Server {0}. " +
-                        "Exception {1}", m_SearchServer, ex);
+                m_Logger.LogError(ex, $"Unable to connect to Search Server {m_SearchServer}.");
 
                 Hashtable ErrorHash = new Hashtable();
                 ErrorHash["success"] = false;

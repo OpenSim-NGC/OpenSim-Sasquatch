@@ -1842,6 +1842,18 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
   <key>type</key><string>integer</string>
   <key>value</key><string>64</string>
  </map>
+ <key>PARCEL_DETAILS_FLAGS</key><map>
+  <key>type</key><string>integer</string>
+  <key>value</key><string>12</string>
+ </map>
+ <key>PARCEL_DETAILS_GEOMETRICCENTER</key><map>
+  <key>type</key><string>integer</string>
+  <key>value</key><string>66</string>
+ </map>
+ <key>PARCEL_DETAILS_GETCLAIMDATE</key><map>
+  <key>type</key><string>integer</string>
+  <key>value</key><string>65</string>
+ </map>
  <key>PARCEL_DETAILS_GROUP</key><map>
   <key>type</key><string>integer</string>
   <key>value</key><string>3</string>
@@ -1854,6 +1866,14 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
   <key>type</key><string>integer</string>
   <key>value</key><string>5</string>
  </map>
+ <key>PARCEL_DETAILS_LANDING_LOOKAT</key><map>
+  <key>type</key><string>integer</string>
+  <key>value</key><string>10</string>
+ </map>
+ <key>PARCEL_DETAILS_LANDING_POINT</key><map>
+  <key>type</key><string>integer</string>
+  <key>value</key><string>9</string>
+ </map>
  <key>PARCEL_DETAILS_NAME</key><map>
   <key>type</key><string>integer</string>
   <key>value</key><string>0</string>
@@ -1862,9 +1882,25 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
   <key>type</key><string>integer</string>
   <key>value</key><string>2</string>
  </map>
+ <key>PARCEL_DETAILS_PRIM_CAPACITY</key><map>
+  <key>type</key><string>integer</string>
+  <key>value</key><string>7</string>
+ </map>
+ <key>PARCEL_DETAILS_PRIM_USED</key><map>
+  <key>type</key><string>integer</string>
+  <key>value</key><string>8</string>
+ </map>
+ <key>PARCEL_DETAILS_SCRIPT_DANGER</key><map>
+  <key>type</key><string>integer</string>
+  <key>value</key><string>13</string>
+ </map>
  <key>PARCEL_DETAILS_SEE_AVATARS</key><map>
   <key>type</key><string>integer</string>
   <key>value</key><string>6</string>
+ </map>
+ <key>PARCEL_DETAILS_TP_ROUTING</key><map>
+  <key>type</key><string>integer</string>
+  <key>value</key><string>11</string>
  </map>
  <key>PARCEL_FLAG_ALLOW_ALL_OBJECT_ENTRY</key><map>
   <key>type</key><string>integer</string>
@@ -4925,6 +4961,13 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
    <map><key>id</key><map><key>type</key><string>key</string></map></map>
   </array>
  </map>
+ <key>llLinear2sRGB</key>
+ <map>
+  <key>return</key><string>vector</string>
+  <key>arguments</key><array>
+   <map><key>src</key><map><key>type</key><string>vector</string></map></map>
+  </array>
+ </map>
  <key>llLinkAdjustSoundVolume</key>
  <map>
   <key>arguments</key><array>
@@ -5248,6 +5291,17 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
    <map><key>end</key><map><key>type</key><string>integer</string></map></map>
   </array>
  </map>
+ <key>llList2ListSlice</key>
+ <map>
+  <key>return</key><string>list</string>
+  <key>arguments</key><array>
+   <map><key>src</key><map><key>type</key><string>list</string></map></map>
+   <map><key>start</key><map><key>type</key><string>integer</string></map></map>
+   <map><key>end</key><map><key>type</key><string>integer</string></map></map>
+   <map><key>stride</key><map><key>type</key><string>integer</string></map></map>
+   <map><key>stride_index</key><map><key>type</key><string>integer</string></map></map>
+  </array>
+ </map>
  <key>llList2ListStrided</key>
  <map>
   <key>return</key><string>list</string>
@@ -5313,6 +5367,17 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
    <map><key>test</key><map><key>type</key><string>list</string></map></map>
   </array>
  </map>
+ <key>llListFindStrided</key>
+ <map>
+  <key>return</key><string>integer</string>
+  <key>arguments</key><array>
+   <map><key>src</key><map><key>type</key><string>list</string></map></map>
+   <map><key>test</key><map><key>type</key><string>list</string></map></map>
+   <map><key>lstart</key><map><key>type</key><string>integer</string></map></map>
+   <map><key>lend</key><map><key>type</key><string>integer</string></map></map>
+   <map><key>lstride</key><map><key>type</key><string>integer</string></map></map>
+  </array>
+ </map>
  <key>llListInsertList</key>
  <map>
   <key>return</key><string>list</string>
@@ -5346,6 +5411,16 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
   <key>arguments</key><array>
    <map><key>src</key><map><key>type</key><string>list</string></map></map>
    <map><key>stride</key><map><key>type</key><string>integer</string></map></map>
+   <map><key>ascending</key><map><key>type</key><string>integer</string></map></map>
+  </array>
+ </map>
+ <key>llListSortStrided</key>
+ <map>
+  <key>return</key><string>list</string>
+  <key>arguments</key><array>
+   <map><key>src</key><map><key>type</key><string>list</string></map></map>
+   <map><key>stride</key><map><key>type</key><string>integer</string></map></map>
+   <map><key>stride_index</key><map><key>type</key><string>integer</string></map></map>
    <map><key>ascending</key><map><key>type</key><string>integer</string></map></map>
   </array>
  </map>
@@ -6489,6 +6564,13 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
    <map><key>f</key><map><key>type</key><string>float</string></map></map>
   </array>
  </map>
+ <key>llsRGB2Linear</key>
+ <map>
+  <key>return</key><string>vector</string>
+  <key>arguments</key><array>
+   <map><key>src</key><map><key>type</key><string>vector</string></map></map>
+  </array>
+ </map>
  <key>llStartAnimation</key>
  <map>
   <key>arguments</key><array>
@@ -6834,7 +6916,6 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
   <key>arguments</key><array>
    <map><key>va</key><map><key>type</key><string>vector</string></map></map>
    <map><key>vb</key><map><key>type</key><string>vector</string></map></map>
-   <map><key>margin</key><map><key>type</key><string>float</string></map></map>
   </array>
  </map>
  <key>osApproxEquals</key>
@@ -6843,6 +6924,7 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
   <key>arguments</key><array>
    <map><key>va</key><map><key>type</key><string>vector</string></map></map>
    <map><key>vb</key><map><key>type</key><string>vector</string></map></map>
+   <map><key>margin</key><map><key>type</key><string>float</string></map></map>
   </array>
  </map>
  <key>osApproxEquals</key>
@@ -6905,15 +6987,15 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
  <map>
   <key>return</key><string>integer</string>
   <key>arguments</key><array>
-   <map><key>sFirstName</key><map><key>type</key><string>string</string></map></map>
-   <map><key>sLastName</key><map><key>type</key><string>string</string></map></map>
+   <map><key>avkey</key><map><key>type</key><string>key</string></map></map>
   </array>
  </map>
  <key>osAvatarType</key>
  <map>
   <key>return</key><string>integer</string>
   <key>arguments</key><array>
-   <map><key>avkey</key><map><key>type</key><string>key</string></map></map>
+   <map><key>sFirstName</key><map><key>type</key><string>string</string></map></map>
+   <map><key>sLastName</key><map><key>type</key><string>string</string></map></map>
   </array>
  </map>
  <key>osCauseDamage</key>
@@ -7171,13 +7253,13 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
  <map>
   <key>arguments</key><array>
    <map><key>avatar</key><map><key>type</key><string>string</string></map></map>
+   <map><key>target</key><map><key>type</key><string>string</string></map></map>
   </array>
  </map>
  <key>osForceOtherSit</key>
  <map>
   <key>arguments</key><array>
    <map><key>avatar</key><map><key>type</key><string>string</string></map></map>
-   <map><key>target</key><map><key>type</key><string>string</string></map></map>
   </array>
  </map>
  <key>osFormatString</key>
@@ -7418,12 +7500,30 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
    <map><key>name</key><map><key>type</key><string>string</string></map></map>
   </array>
  </map>
+ <key>osGetParcelDetails</key>
+ <map>
+  <key>return</key><string>list</string>
+  <key>arguments</key><array>
+   <map><key>id</key><map><key>type</key><string>key</string></map></map>
+   <map><key>param</key><map><key>type</key><string>list</string></map></map>
+  </array>
+ </map>
  <key>osGetParcelDwell</key>
  <map>
   <key>return</key><string>integer</string>
   <key>arguments</key><array>
    <map><key>pos</key><map><key>type</key><string>vector</string></map></map>
   </array>
+ </map>
+ <key>osGetParcelID</key>
+ <map>
+  <key>return</key><string>key</string>
+  <key>arguments</key><undef/>
+ </map>
+ <key>osGetParcelIDs</key>
+ <map>
+  <key>return</key><string>list</string>
+  <key>arguments</key><undef/>
  </map>
  <key>osGetPhysicsEngineName</key>
  <map>
@@ -7561,15 +7661,15 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
  <key>osKickAvatar</key>
  <map>
   <key>arguments</key><array>
-   <map><key>FirstName</key><map><key>type</key><string>string</string></map></map>
-   <map><key>SurName</key><map><key>type</key><string>string</string></map></map>
+   <map><key>agentId</key><map><key>type</key><string>key</string></map></map>
    <map><key>alert</key><map><key>type</key><string>string</string></map></map>
   </array>
  </map>
  <key>osKickAvatar</key>
  <map>
   <key>arguments</key><array>
-   <map><key>agentId</key><map><key>type</key><string>key</string></map></map>
+   <map><key>FirstName</key><map><key>type</key><string>string</string></map></map>
+   <map><key>SurName</key><map><key>type</key><string>string</string></map></map>
    <map><key>alert</key><map><key>type</key><string>string</string></map></map>
   </array>
  </map>
@@ -7585,6 +7685,15 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
   <key>arguments</key><array>
    <map><key>src</key><map><key>type</key><string>list</string></map></map>
    <map><key>stride</key><map><key>type</key><string>integer</string></map></map>
+   <map><key>ascending</key><map><key>type</key><string>integer</string></map></map>
+  </array>
+ </map>
+ <key>osListSortInPlaceStrided</key>
+ <map>
+  <key>arguments</key><array>
+   <map><key>src</key><map><key>type</key><string>list</string></map></map>
+   <map><key>stride</key><map><key>type</key><string>integer</string></map></map>
+   <map><key>stride_index</key><map><key>type</key><string>integer</string></map></map>
    <map><key>ascending</key><map><key>type</key><string>integer</string></map></map>
   </array>
  </map>
@@ -7709,7 +7818,6 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
    <map><key>name</key><map><key>type</key><string>string</string></map></map>
    <map><key>position</key><map><key>type</key><string>vector</string></map></map>
    <map><key>notecard</key><map><key>type</key><string>string</string></map></map>
-   <map><key>options</key><map><key>type</key><string>integer</string></map></map>
   </array>
  </map>
  <key>osNpcCreate</key>
@@ -7720,6 +7828,7 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
    <map><key>name</key><map><key>type</key><string>string</string></map></map>
    <map><key>position</key><map><key>type</key><string>vector</string></map></map>
    <map><key>notecard</key><map><key>type</key><string>string</string></map></map>
+   <map><key>options</key><map><key>type</key><string>integer</string></map></map>
   </array>
  </map>
  <key>osNpcGetOwner</key>
@@ -7794,6 +7903,7 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
   <key>arguments</key><array>
    <map><key>npc</key><map><key>type</key><string>key</string></map></map>
    <map><key>notecard</key><map><key>type</key><string>string</string></map></map>
+   <map><key>includeHuds</key><map><key>type</key><string>integer</string></map></map>
   </array>
  </map>
  <key>osNpcSaveAppearance</key>
@@ -7802,7 +7912,6 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
   <key>arguments</key><array>
    <map><key>npc</key><map><key>type</key><string>key</string></map></map>
    <map><key>notecard</key><map><key>type</key><string>string</string></map></map>
-   <map><key>includeHuds</key><map><key>type</key><string>integer</string></map></map>
   </array>
  </map>
  <key>osNpcSay</key>
@@ -7901,11 +8010,14 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
    <map><key>message</key><map><key>type</key><string>string</string></map></map>
   </array>
  </map>
- <key>osOwnerSaveAppearance</key>
+ <key>osOldList2ListStrided</key>
  <map>
-  <key>return</key><string>key</string>
+  <key>return</key><string>list</string>
   <key>arguments</key><array>
-   <map><key>notecard</key><map><key>type</key><string>string</string></map></map>
+   <map><key>src</key><map><key>type</key><string>list</string></map></map>
+   <map><key>start</key><map><key>type</key><string>integer</string></map></map>
+   <map><key>end</key><map><key>type</key><string>integer</string></map></map>
+   <map><key>stride</key><map><key>type</key><string>integer</string></map></map>
   </array>
  </map>
  <key>osOwnerSaveAppearance</key>
@@ -7914,6 +8026,13 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
   <key>arguments</key><array>
    <map><key>notecard</key><map><key>type</key><string>string</string></map></map>
    <map><key>includeHuds</key><map><key>type</key><string>integer</string></map></map>
+  </array>
+ </map>
+ <key>osOwnerSaveAppearance</key>
+ <map>
+  <key>return</key><string>key</string>
+  <key>arguments</key><array>
+   <map><key>notecard</key><map><key>type</key><string>string</string></map></map>
   </array>
  </map>
  <key>osParcelJoin</key>
@@ -8242,6 +8361,23 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
    <map><key>color</key><map><key>type</key><string>string</string></map></map>
   </array>
  </map>
+  <key>osSetPenColor</key>
+ <map>
+  <key>return</key><string>string</string>
+  <key>arguments</key><array>
+   <map><key>drawList</key><map><key>type</key><string>string</string></map></map>
+   <map><key>color</key><map><key>type</key><string>vector</string></map></map>
+  </array>
+ </map>
+ <key>osSetPenColor</key>
+ <map>
+  <key>return</key><string>string</string>
+  <key>arguments</key><array>
+   <map><key>drawList</key><map><key>type</key><string>string</string></map></map>
+   <map><key>color</key><map><key>type</key><string>vector</string></map></map>
+   <map><key>alpha</key><map><key>type</key><string>float</string></map></map>
+  </array>
+ </map>
  <key>osSetPenColour</key>
  <map>
   <key>return</key><string>string</string>
@@ -8391,19 +8527,19 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
  </map>
  <key>osSlerp</key>
  <map>
-  <key>return</key><string>vector</string>
+  <key>return</key><string>rotation</string>
   <key>arguments</key><array>
-   <map><key>a</key><map><key>type</key><string>vector</string></map></map>
-   <map><key>b</key><map><key>type</key><string>vector</string></map></map>
+   <map><key>a</key><map><key>type</key><string>rotation</string></map></map>
+   <map><key>b</key><map><key>type</key><string>rotation</string></map></map>
    <map><key>amount</key><map><key>type</key><string>float</string></map></map>
   </array>
  </map>
  <key>osSlerp</key>
  <map>
-  <key>return</key><string>rotation</string>
+  <key>return</key><string>vector</string>
   <key>arguments</key><array>
-   <map><key>a</key><map><key>type</key><string>rotation</string></map></map>
-   <map><key>b</key><map><key>type</key><string>rotation</string></map></map>
+   <map><key>a</key><map><key>type</key><string>vector</string></map></map>
+   <map><key>b</key><map><key>type</key><string>vector</string></map></map>
    <map><key>amount</key><map><key>type</key><string>float</string></map></map>
   </array>
  </map>
@@ -8428,6 +8564,8 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
   <key>arguments</key><array>
    <map><key>src</key><map><key>type</key><string>string</string></map></map>
    <map><key>value</key><map><key>type</key><string>string</string></map></map>
+   <map><key>start</key><map><key>type</key><string>integer</string></map></map>
+   <map><key>count</key><map><key>type</key><string>integer</string></map></map>
    <map><key>ignorecase</key><map><key>type</key><string>integer</string></map></map>
   </array>
  </map>
@@ -8437,17 +8575,6 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
   <key>arguments</key><array>
    <map><key>src</key><map><key>type</key><string>string</string></map></map>
    <map><key>value</key><map><key>type</key><string>string</string></map></map>
-   <map><key>start</key><map><key>type</key><string>integer</string></map></map>
-   <map><key>count</key><map><key>type</key><string>integer</string></map></map>
-   <map><key>ignorecase</key><map><key>type</key><string>integer</string></map></map>
-  </array>
- </map>
- <key>osStringLastIndexOf</key>
- <map>
-  <key>return</key><string>integer</string>
-  <key>arguments</key><array>
-   <map><key>src</key><map><key>type</key><string>string</string></map></map>
-   <map><key>value</key><map><key>type</key><string>string</string></map></map>
    <map><key>ignorecase</key><map><key>type</key><string>integer</string></map></map>
   </array>
  </map>
@@ -8459,6 +8586,15 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
    <map><key>value</key><map><key>type</key><string>string</string></map></map>
    <map><key>start</key><map><key>type</key><string>integer</string></map></map>
    <map><key>count</key><map><key>type</key><string>integer</string></map></map>
+   <map><key>ignorecase</key><map><key>type</key><string>integer</string></map></map>
+  </array>
+ </map>
+ <key>osStringLastIndexOf</key>
+ <map>
+  <key>return</key><string>integer</string>
+  <key>arguments</key><array>
+   <map><key>src</key><map><key>type</key><string>string</string></map></map>
+   <map><key>value</key><map><key>type</key><string>string</string></map></map>
    <map><key>ignorecase</key><map><key>type</key><string>integer</string></map></map>
   </array>
  </map>
@@ -8560,7 +8696,6 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
  <key>osTeleportOwner</key>
  <map>
   <key>arguments</key><array>
-   <map><key>regionName</key><map><key>type</key><string>string</string></map></map>
    <map><key>position</key><map><key>type</key><string>vector</string></map></map>
    <map><key>lookat</key><map><key>type</key><string>vector</string></map></map>
   </array>
@@ -8577,6 +8712,7 @@ f0eb469c-b2f3-4d64-802a-1ac709cb91e6
  <key>osTeleportOwner</key>
  <map>
   <key>arguments</key><array>
+   <map><key>regionName</key><map><key>type</key><string>string</string></map></map>
    <map><key>position</key><map><key>type</key><string>vector</string></map></map>
    <map><key>lookat</key><map><key>type</key><string>vector</string></map></map>
   </array>

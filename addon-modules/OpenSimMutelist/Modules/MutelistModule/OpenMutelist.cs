@@ -42,15 +42,8 @@ using System.Reflection;
 using System.Security.Cryptography;
 using System.Xml;
 
-[assembly: Addin("OpenSimMutelist", OpenSim.VersionInfo.AssemblyVersionNumber + "0.1")]
-[assembly: AddinDependency("OpenSim.Region.Framework", OpenSim.VersionInfo.AssemblyVersionNumber)]
-[assembly: AddinDescription("OpenSimMutelist module.")]
-[assembly: AddinAuthor("Kevin Cozens")]
-
-
 namespace OpenSim.Region.CoreModules.Avatar.InstantMessage
 {
-    [Extension(Path = "/OpenSim/RegionModules", NodeName = "RegionModule", Id = "OpenSimMutelist")]
     public class MuteListModule : ISharedRegionModule
     {
         private static readonly ILog m_log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
@@ -72,7 +65,7 @@ namespace OpenSim.Region.CoreModules.Avatar.InstantMessage
 
         #region IRegionModuleBase implementation
 
-        public void Initialise(IConfigSource config)
+        public void Initialise(IConfiguration config)
         {
             IConfig cnf = config.Configs["Messaging"];
             if (cnf == null)

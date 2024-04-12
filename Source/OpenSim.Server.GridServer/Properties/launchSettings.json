@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "OpenSim.Server.RobustServer": {
+      "commandName": "Project",
+      "commandLineArgs": "--console local --inifile L:\\Documents\\Projects\\OpenSimulator\\Config\\Robust.Grid.ini"
+    }
+  }
+}

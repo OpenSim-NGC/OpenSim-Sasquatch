@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyTitle>Gloebit</AssemblyTitle>
+    <PackageId>Gloebit</PackageId>
+    <Description>OpenSim Addin for Gloebit Money Module</Description>
+    <Authors>gloebit@gloebit.com</Authors>
+    <Company>Gloebit LLC</Company>  
+  </PropertyGroup>
+  
+  <Target Name="CopyFiles">
+    <Copy SourceFiles="@(FilesToCopy_0000)" DestinationFolder="../../bin/" />
+  </Target>
+
+  <ItemGroup>
+    <Reference Include="Npgsql">
+      <HintPath>..\..\bin\Npgsql.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="OpenMetaverse">
+      <HintPath>..\..\bin\OpenMetaverse.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="OpenMetaverse.StructuredData">
+      <HintPath>..\..\bin\OpenMetaverse.StructuredData.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="OpenMetaverseTypes">
+      <HintPath>..\..\bin\OpenMetaverseTypes.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="XMLRPC">
+      <HintPath>..\..\bin\XMLRPC.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Source\OpenSim.Data\OpenSim.Data.csproj" />
+    <ProjectReference Include="..\..\Source\OpenSim.Data.MySQL\OpenSim.Data.MySQL.csproj" />
+    <ProjectReference Include="..\..\Source\OpenSim.Data.PGSQL\OpenSim.Data.PGSQL.csproj" />
+    <ProjectReference Include="..\..\Source\OpenSim.Data.SQLite\OpenSim.Data.SQLite.csproj" />
+    <ProjectReference Include="..\..\Source\OpenSim.Framework\OpenSim.Framework.csproj" />
+    <ProjectReference Include="..\..\Source\OpenSim.Framework.Servers\OpenSim.Framework.Servers.csproj" />
+    <ProjectReference Include="..\..\Source\OpenSim.Framework.Servers.HttpServer\OpenSim.Framework.Servers.HttpServer.csproj" />
+    <ProjectReference Include="..\..\Source\OpenSim.Region.CoreModules\OpenSim.Region.CoreModules.csproj" />
+    <ProjectReference Include="..\..\Source\OpenSim.Region.Framework\OpenSim.Region.Framework.csproj" />
+    <ProjectReference Include="..\..\Source\OpenSim.Region.OptionalModules\OpenSim.Region.OptionalModules.csproj" />
+    <ProjectReference Include="..\..\Source\OpenSim.Region.ScriptEngine.Shared\OpenSim.Region.ScriptEngine.Shared.csproj" />
+    <ProjectReference Include="..\..\Source\OpenSim.Server.Base\OpenSim.Server.Base.csproj" />
+    <ProjectReference Include="..\..\Source\OpenSim.Services\OpenSim.Services.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\GloebitSubscriptionsMySQL.migrations" />
+    <EmbeddedResource Include="Resources\GloebitSubscriptionsPGSQL.migrations" />
+    <EmbeddedResource Include="Resources\GloebitSubscriptionsSQLite.migrations" />
+    <EmbeddedResource Include="Resources\GloebitTransactionsMySQL.migrations" />
+    <EmbeddedResource Include="Resources\GloebitTransactionsPGSQL.migrations" />
+    <EmbeddedResource Include="Resources\GloebitTransactionsSQLite.migrations" />
+    <EmbeddedResource Include="Resources\GloebitUsersMySQL.migrations" />
+    <EmbeddedResource Include="Resources\GloebitUsersPGSQL.migrations" />
+    <EmbeddedResource Include="Resources\GloebitUsersSQLite.migrations" />
+    <EmbeddedResource Include="Resources\Gloebit.addin.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="8.0.0" />
+    <PackageReference Include="MySqlConnector" Version="2.3.5" />
+  </ItemGroup>
+</Project>

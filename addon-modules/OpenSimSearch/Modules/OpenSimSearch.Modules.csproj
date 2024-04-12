@@ -1,19 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <AssemblyTitle>OpenSimSearch.Modules</AssemblyTitle>
     <Product>OpenSim</Product>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="8.0.0" />
     <PackageReference Include="log4net" Version="2.0.15" />
-    <PackageReference Include="Mono.Addins" Version="1.4.1" />
+    <PackageReference Include="RawScape.Nini" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Nini">
-      <HintPath>..\..\..\bin\Nini.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="OpenMetaverse">
       <HintPath>..\..\..\bin\OpenMetaverse.dll</HintPath>
       <Private>False</Private>
@@ -28,11 +25,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\OpenSim\Data\OpenSim.Data.csproj" />
-    <ProjectReference Include="..\..\..\OpenSim\Framework\OpenSim.Framework.csproj" />
-    <ProjectReference Include="..\..\..\OpenSim\Framework\Console\OpenSim.Framework.Console.csproj" />
-    <ProjectReference Include="..\..\..\OpenSim\Framework\Servers\OpenSim.Framework.Servers.csproj" />
-    <ProjectReference Include="..\..\..\OpenSim\Region\Framework\OpenSim.Region.Framework.csproj" />
-    <ProjectReference Include="..\..\..\OpenSim\Services\Interfaces\OpenSim.Services.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Source\OpenSim.Data\OpenSim.Data.csproj" />
+    <ProjectReference Include="..\..\Source\OpenSim.Framework\OpenSim.Framework.csproj" />
+    <ProjectReference Include="..\..\Source\OpenSim.Framework.Console\OpenSim.Framework.Console.csproj" />
+    <ProjectReference Include="..\..\Source\OpenSim.Framework.Servers\OpenSim.Framework.Servers.csproj" />
+    <ProjectReference Include="..\..\Source\OpenSim.Region.Framework\OpenSim.Region.Framework.csproj" />
+    <ProjectReference Include="..\..\Source\OpenSim.Services\OpenSim.Services.csproj" />
   </ItemGroup>
 </Project>

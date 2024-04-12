@@ -1,0 +1,1 @@
+dotnet ef dbcontext scaffold "server=192.168.1.241; port=3306; database=opensim; user=opensim; password=*M1ke.Chase*;" MySql.EntityFrameworkCore --context InventoryServiceContext --schema opensim -o Models -t inventoryfolders -t inventoryitems -f 

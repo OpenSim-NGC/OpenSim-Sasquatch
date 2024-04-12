@@ -1,0 +1,23 @@
+<Addin id="Gloebit" version="0.9.3.0">
+    
+  <Runtime>
+    <Import assembly="OpenSim.dll" />
+    <Import assembly="OpenSim.Region.Framework.dll" />
+    <Import assembly="Mono.Addins.dll"/>
+  </Runtime>
+
+  <Dependencies>
+    <Addin id="OpenSim" version="0.9.3.0" />
+  </Dependencies>
+
+  <ExtensionPoint path="/OpenSim/RegionModules">
+    <ExtensionNode name="RegionModule"
+                   type="Mono.Addins.TypeExtensionNode"
+                   objectType="OpenSim.Region.Framework.Interfaces.IRegionModuleBase"/>
+  </ExtensionPoint>  
+
+  <Extension path = "/OpenSim/RegionModules">
+    <RegionModule id="GloebitMoneyModule" class="Gloebit.GloebitMoneyModule.GloebitMoneyModule" />
+	</Extension>
+  
+</Addin>

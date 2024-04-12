@@ -1,10 +1,23 @@
+# git clone
+
+get or update source from git
+
+ `git clone git://opensimulator.org/git/opensim`
+	
+
+
 # Building on Windows
 
 ## Requirements
   For building under Windows, the following is required:
   * [Microsoft DotNet 6.0](https://dotnet.microsoft.com/en-us/download), version 6.0 or later. 
 
-  dotnet 6.0 is the LTS version and is recommended.
+  dotnet 6.0 is the current LTS version and is recommended.
+
+optionally also
+
+  * [Visual Studio .NET](https://visualstudio.microsoft.com/vs/features/net-development/), version 2022 or later
+  
 
 ### Building
  Prebuild is no longer used.  There is a top level Solution (sln) and csproj files for each
@@ -18,8 +31,6 @@ Either command will do a NuGet restore (dotnet restore) to restore any required 
 kicking off a build using a current version of msbuild.  The Csproj and SLN files are all designed to use the new
 format for Msbuild which is simplified and really directly replaces what prebuild provided.
 
-Load the generated OpenSim.sln into Visual Studio .NET and build the solution.
-
 Configure, see below
 
 The resulting build will be generated to ./build/{Debug|Release}/
@@ -27,11 +38,18 @@ The resulting build will be generated to ./build/{Debug|Release}/
 # Building on Linux / Mac
 
 ## Requirements
-
- *	[Mono > 5.0](https://www.mono-project.com/download/stable/#download-lin)
- *	On some Linux distributions you may need to install additional packages.
  * [Microsoft DotNet 6.0](https://dotnet.microsoft.com/en-us/download), version 6.0 or later. 
-  dotnet 6.0 is the LTS version and is recommended.
+   dotnet 6.0 is the LTS version and is recommended.
+
+ * [dotnet 6.0 SDK and Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+ 
+ * libgdiplus 
+ 
+ if you have mono 6.x complete, you already have libgdiplus, otherwise you need to install it
+ using a package manager for your operating system, like apt, brew, macports, etc
+ for example on debian:
+ 
+ `apt-get update && apt-get install -y apt-utils libgdiplus libc6-dev`
 
 ### Building
  Prebuild is no longer used.  There is a top level Solution (sln) and csproj files for each
